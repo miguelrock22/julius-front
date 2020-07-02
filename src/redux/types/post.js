@@ -1,0 +1,3 @@
+export const START_GET_POSTS = "START_GET_POSTS";
+export const SUCCESS_GET_POSTS = "SUCCESS_GET_POSTS";
+export const ERROR_GET_POSTS = "ERROR_GET_POSTS";
