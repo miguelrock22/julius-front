@@ -3,10 +3,10 @@ export const apiCall = (url, method, payload = null, header = {}) => {
         'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
     };
     if (!header.file)
-        header['Content-Type'] = "application/json";
+        headers['Content-Type'] = "application/json";
     if (header.auth)
         headers.Authorization = localStorage.getItem('token');
-    return fetch(`http://localhost:5000/${url}`, {
+    return fetch(`${process.env.REACT_APP_BACK_URL}${url}`, {
             method: method,
             body: payload ? (header.file ? payload : JSON.stringify(payload)) : null,
             headers
