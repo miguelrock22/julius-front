@@ -1,12 +1,14 @@
-export const apiCall = (url, method, payload = null, auth = null) => {
+export const apiCall = (url, method, payload = null, header = {}) => {
     let headers = {
-        'Content-Type': 'application/json'
+        'Accept': 'application/json, application/xml, text/plain, text/html, *.*',
     };
-    if (auth)
+    if (!header.file)
+        header['Content-Type'] = "application/json";
+    if (header.auth)
         headers.Authorization = localStorage.getItem('token');
     return fetch(`http://localhost:5000/${url}`, {
             method: method,
-            body: payload ? JSON.stringify(payload) : null,
+            body: payload ? (header.file ? payload : JSON.stringify(payload)) : null,
             headers
         })
         .then(response => {
