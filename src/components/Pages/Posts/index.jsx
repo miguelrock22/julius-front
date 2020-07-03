@@ -219,6 +219,7 @@ const Posts = () => {
                 </Table>
             </TableContainer>
             <TablePagination
+                rowsPerPageOptions={10}
                 component="div"
                 count={post.count}
                 rowsPerPage={10}
